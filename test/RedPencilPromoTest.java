@@ -10,13 +10,20 @@ public class RedPencilPromoTest {
 
     @Test
     public void itemClassShouldExistAndTakeInputs(){
-        Item testObject = new Item(100, 100, 60, 0, 100);
+        Item testItem = new Item(100, 100, 60, 0, 100);
     }
 
     @Test
     public void redPencilPromoClassShouldExistAndReturnFalseWhenConditionsForPromoAreNotMet(){
-        Item testObject = new Item(100, 100, 60, 0, 100);
+        Item testItem = new Item(100, 100, 60, 0, 100);
         RedPencilPromo testPromo = new RedPencilPromo();
-        assertEquals(false, testPromo.isPromoActive(testObject));
+        assertEquals(false, testPromo.isPromoActive(testItem));
+    }
+
+    @Test
+    public void shouldReturnFalseIfThereHasBeenAPriceIncreaseWhenPromoNotActive(){
+        Item testItem = new Item(100, 110, 60, 0, 100);
+        RedPencilPromo testPromo = new RedPencilPromo();
+        assertEquals(false, testPromo.isPromoActive(testItem));
     }
 }

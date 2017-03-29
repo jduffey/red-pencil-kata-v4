@@ -16,4 +16,24 @@ public class Item {
         this.daysSincePromoBecameActive = daysSincePromoBecameActive;
         this.priceAtTimeOfPromoActivation = priceAtTimeOfPromotActivation;
     }
+
+    public int getCurrentPrice() {
+        return currentPrice;
+    }
+
+    public int getNewPrice() {
+        return newPrice;
+    }
+
+    public int getDaysSinceLastPriceChange() {
+        return daysSinceLastPriceChange;
+    }
+
+    public int getDaysSincePromoBecameActive() {
+        return daysSincePromoBecameActive;
+    }
+
+    public int getPriceAtTimeOfPromoActivation() {
+        return priceAtTimeOfPromoActivation;
+    }
 }
