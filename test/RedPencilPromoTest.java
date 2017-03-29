@@ -11,6 +11,7 @@ public class RedPencilPromoTest {
     @Test
     public void itemClassShouldExistAndTakeInputs(){
         Item testItem = new Item(100, 100, 60, 0, 100);
+        assertEquals(true, testItem == testItem);
     }
 
     @Test
