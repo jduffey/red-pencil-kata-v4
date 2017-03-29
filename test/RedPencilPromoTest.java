@@ -38,4 +38,10 @@ public class RedPencilPromoTest {
         Item testItem = new Item(100, 99, 60, 0, 100);
         assertEquals(false, testPromo.isPromoActive(testItem));
     }
+
+    @Test
+    public void shouldReturnFalseIfEverythingIsGoodButPriceDroppedMoreThanAllowedMaximum(){
+        Item testItem = new Item(100, 69, 60, 0, 100);
+        assertEquals(false, testPromo.isPromoActive(testItem));
+    }
 }

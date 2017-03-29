@@ -8,14 +8,25 @@ public class RedPencilPromo {
 
         if (didThePriceNotDropEnough(testItem)) return false;
 
+        if (didThePriceDropTooMuch(testItem)) return false;
+
         return true;
 
     }
 
+    private boolean didThePriceDropTooMuch(Item testItem) {
+        if (testItem.getCurrentPrice() != testItem.getNewPrice()) {
+            double percentagePriceDropFromPrePromoPrice = (testItem.getPriceAtTimeOfPromoActivation() - testItem.getNewPrice()) / testItem.getPriceAtTimeOfPromoActivation();
+            return percentagePriceDropFromPrePromoPrice > .30;
+        }
+        return false;
+    }
+
     private boolean didThePriceNotDropEnough(Item testItem) {
-        if (testItem.getCurrentPrice() != testItem.getNewPrice()){
-        double percentagePriceDropFromPrePromoPrice = (testItem.getPriceAtTimeOfPromoActivation() - testItem.getNewPrice())/testItem.getPriceAtTimeOfPromoActivation();
-        return percentagePriceDropFromPrePromoPrice < .05;}
+        if (testItem.getCurrentPrice() != testItem.getNewPrice()) {
+            double percentagePriceDropFromPrePromoPrice = (testItem.getPriceAtTimeOfPromoActivation() - testItem.getNewPrice()) / testItem.getPriceAtTimeOfPromoActivation();
+            return percentagePriceDropFromPrePromoPrice < .05;
+        }
         return false;
     }
 
