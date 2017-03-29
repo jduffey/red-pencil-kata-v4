@@ -46,4 +46,10 @@ public class RedPencilPromoTest {
         Item testItem = new Item(100, 69, 60, 0, 100);
         assertEquals(false, testPromo.isPromoActive(testItem));
     }
+
+    @Test
+    public void shouldReturnFalseIfPromoHasLastedMoreThanTheMaxAmountOfDays(){
+        Item testItem = new Item(75, 75, 20, 31, 100);
+        assertEquals(false, testPromo.isPromoActive(testItem));
+    }
 }

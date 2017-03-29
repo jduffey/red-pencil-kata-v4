@@ -5,6 +5,7 @@ public class RedPencilPromo {
 
     private final double MAXIMUM_PERCENTAGE_DROP = .30;
     private final double MINIMUM_PERCENTAGE_DROP = .05;
+    private final int MAXIMUM_LENGTH_OF_PROMOTION = 30;
 
     public boolean isPromoActive(Item testItem) {
 
@@ -12,8 +13,15 @@ public class RedPencilPromo {
 
         if (didThePriceChangeButFallOutsideOfTheAcceptableRange(testItem)) return false;
 
+        if (hasThePromoGoneOverItsMaxAllowedDays(testItem)) return false;
+
         return true;
 
+    }
+
+    private boolean hasThePromoGoneOverItsMaxAllowedDays(Item testItem) {
+        if (testItem.getDaysSincePromoBecameActive()> MAXIMUM_LENGTH_OF_PROMOTION) return true;
+        return false;
     }
 
     private boolean didThePriceChangeButFallOutsideOfTheAcceptableRange(Item testItem){
