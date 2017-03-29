@@ -3,11 +3,11 @@
  */
 public class Item {
 
-    private int currentPrice;
-    private int newPrice;
+    private double currentPrice;
+    private double newPrice;
     private int daysSinceLastPriceChange;
     private int daysSincePromoBecameActive;
-    private int priceAtTimeOfPromoActivation;
+    private double priceAtTimeOfPromoActivation;
 
     public Item(int currentPrice, int newPrice, int daysSinceLastPriceChange, int daysSincePromoBecameActive, int priceAtTimeOfPromotActivation) {
         this.currentPrice = currentPrice;
@@ -17,11 +17,11 @@ public class Item {
         this.priceAtTimeOfPromoActivation = priceAtTimeOfPromotActivation;
     }
 
-    public int getCurrentPrice() {
+    public double getCurrentPrice() {
         return currentPrice;
     }
 
-    public int getNewPrice() {
+    public double getNewPrice() {
         return newPrice;
     }
 
@@ -33,7 +33,7 @@ public class Item {
         return daysSincePromoBecameActive;
     }
 
-    public int getPriceAtTimeOfPromoActivation() {
+    public double getPriceAtTimeOfPromoActivation() {
         return priceAtTimeOfPromoActivation;
     }
 }
