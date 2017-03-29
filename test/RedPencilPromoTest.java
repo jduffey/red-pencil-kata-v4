@@ -24,14 +24,12 @@ public class RedPencilPromoTest {
     @Test
     public void redPencilPromoClassShouldExistAndReturnFalseWhenConditionsForPromoAreNotMet(){
         Item testItem = new Item(100, 100, 60, 0, 100);
-        // RedPencilPromo testPromo = new RedPencilPromo();
         assertEquals(false, testPromo.isPromoActive(testItem));
     }
 
     @Test
     public void shouldReturnFalseIfThereHasBeenAPriceIncreaseWhenPromoNotActive(){
         Item testItem = new Item(100, 110, 60, 0, 100);
-        // RedPencilPromo testPromo = new RedPencilPromo();
         assertEquals(false, testPromo.isPromoActive(testItem));
     }
 }
