@@ -22,9 +22,9 @@ public class RedPencilPromoTest {
     }
 
     @Test
-    public void redPencilPromoClassShouldExistAndReturnFalseWhenConditionsForPromoAreNotMet(){
-        Item testItem = new Item(100, 100, 60, 0, 100);
-        assertEquals(false, testPromo.isPromoActive(testItem));
+    public void redPencilPromoClassShouldExistAndReturnTrueWhenConditionsForPromoAreMet(){
+        Item testItem = new Item(100, 75, 60, 0, 100);
+        assertEquals(true, testPromo.isPromoActive(testItem));
     }
 
     @Test

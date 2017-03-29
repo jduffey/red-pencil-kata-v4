@@ -6,7 +6,7 @@ public class RedPencilPromo {
 
         if (didThePriceIncrease(testObject)) return false;
 
-        return false;
+        return true;
 
     }
 
