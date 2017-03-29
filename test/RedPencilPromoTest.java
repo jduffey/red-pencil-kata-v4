@@ -35,7 +35,7 @@ public class RedPencilPromoTest {
 
     @Test
     public void shouldReturnFalseIfEverythingIsGoodButPriceDroppedLessThanRequiredMinimum(){
-        Item testItem = new Item(100, 99, 60, 0, 100);
+        Item testItem = new Item(100, 96, 60, 0, 100);
         assertEquals(false, testPromo.isPromoActive(testItem));
     }
 
