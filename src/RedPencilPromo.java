@@ -3,8 +3,11 @@
  */
 public class RedPencilPromo {
     public boolean isPromoActive(Item testObject) {
+
         if (didThePriceIncrease(testObject)) return false;
+
         return false;
+
     }
 
     private boolean didThePriceIncrease(Item testItem) {
