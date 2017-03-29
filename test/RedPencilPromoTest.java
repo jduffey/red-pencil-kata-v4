@@ -28,9 +28,11 @@ public class RedPencilPromoTest {
     }
 
     @Test
-    public void shouldReturnFalseIfThereHasBeenAPriceIncreaseWhenPromoNotActive(){
-        Item testItem = new Item(100, 110, 60, 0, 100);
-        assertEquals(false, testPromo.isPromoActive(testItem));
+    public void shouldReturnFalseIfThereHasBeenAPriceIncreaseWhetherPromoIsActiveOrNot(){
+        Item testItem1 = new Item(100, 110, 60, 0, 100);
+        Item testItem2 = new Item(75, 80, 15, 15, 100);
+        assertEquals(false, testPromo.isPromoActive(testItem1));
+        assertEquals(false, testPromo.isPromoActive(testItem2));
     }
 
     @Test
