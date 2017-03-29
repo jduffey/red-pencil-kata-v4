@@ -8,6 +8,13 @@ import static org.junit.Assert.assertEquals;
  */
 public class RedPencilPromoTest {
 
+    private RedPencilPromo testPromo;
+
+    @Before
+    public void setup(){
+        testPromo = new RedPencilPromo();
+    }
+
     @Test
     public void itemClassShouldExistAndTakeInputs(){
         Item testItem = new Item(100, 100, 60, 0, 100);
@@ -17,14 +24,14 @@ public class RedPencilPromoTest {
     @Test
     public void redPencilPromoClassShouldExistAndReturnFalseWhenConditionsForPromoAreNotMet(){
         Item testItem = new Item(100, 100, 60, 0, 100);
-        RedPencilPromo testPromo = new RedPencilPromo();
+        // RedPencilPromo testPromo = new RedPencilPromo();
         assertEquals(false, testPromo.isPromoActive(testItem));
     }
 
     @Test
     public void shouldReturnFalseIfThereHasBeenAPriceIncreaseWhenPromoNotActive(){
         Item testItem = new Item(100, 110, 60, 0, 100);
-        RedPencilPromo testPromo = new RedPencilPromo();
+        // RedPencilPromo testPromo = new RedPencilPromo();
         assertEquals(false, testPromo.isPromoActive(testItem));
     }
 }
