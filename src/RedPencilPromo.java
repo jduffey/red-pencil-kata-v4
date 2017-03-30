@@ -11,7 +11,7 @@ public class RedPencilPromo {
     public boolean isPromoActive(Item testItem) {
 
         return didThePriceNotIncrease(testItem)
-                && didThePriceChangeAndFallInsideOfTheAcceptableRange(testItem)
+                && checkIfThePriceChangedDidItFallInsideOfTheAcceptableRange(testItem)
                 && hasThePromoNotGoneOverItsMaxAllowedDays(testItem)
                 && checkIfWhenPromoNotActiveWasPriceNotChangedTooRecently(testItem);
 
@@ -27,7 +27,7 @@ public class RedPencilPromo {
         return false;
     }
 
-    private boolean didThePriceChangeAndFallInsideOfTheAcceptableRange(Item testItem) {
+    private boolean checkIfThePriceChangedDidItFallInsideOfTheAcceptableRange(Item testItem) {
         if (testItem.getCurrentPrice() != testItem.getNewPrice()) {
             double percentagePriceDropFromPrePromoPrice = (testItem.getPriceAtTimeOfPromoActivation() - testItem.getNewPrice()) / testItem.getPriceAtTimeOfPromoActivation();
             return percentagePriceDropFromPrePromoPrice < MAXIMUM_PERCENTAGE_DROP && percentagePriceDropFromPrePromoPrice > MINIMUM_PERCENTAGE_DROP;
