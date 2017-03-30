@@ -52,4 +52,11 @@ public class RedPencilPromoTest {
         Item testItem = new Item(75, 75, 20, 31, 100);
         assertEquals(false, testPromo.isPromoActive(testItem));
     }
+
+    @Test
+    public void shouldReturnFalseIfPromoWouldHaveStartedIfNotForThePriceHavingBeenChangedTooRecently(){
+        Item testItem = new Item(100, 80, 22,0,100);
+        assertEquals(false, testPromo.isPromoActive(testItem));
+    }
+    
 }
