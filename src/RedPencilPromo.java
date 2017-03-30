@@ -10,37 +10,37 @@ public class RedPencilPromo {
 
     public boolean isPromoActive(Item testItem) {
 
-        if (didThePriceIncrease(testItem)) return false;
+        if (!didThePriceNotIncrease(testItem)) return false;
 
-        if (didThePriceChangeButFallOutsideOfTheAcceptableRange(testItem)) return false;
+        if (!didThePriceChangeAndFallInsideOfTheAcceptableRange(testItem)) return false;
 
-        if (hasThePromoGoneOverItsMaxAllowedDays(testItem)) return false;
+        if (!hasThePromoNotGoneOverItsMaxAllowedDays(testItem)) return false;
 
-        if (isPromoNotActiveButPriceWasChangedTooRecently(testItem)) return false;
+        if (!checkIfWhenPromoNotActiveWasPriceNotChangedTooRecently(testItem)) return false;
 
         return true;
 
     }
 
-    private boolean isPromoNotActiveButPriceWasChangedTooRecently(Item testItem) {
-        if (testItem.getDaysSincePromoBecameActive() == 0 && testItem.getDaysSinceLastPriceChange() <= DAYS_PRICE_MUST_REMAIN_STABLE_TO_ACTIVATE_PROMO) return true;
+    private boolean checkIfWhenPromoNotActiveWasPriceNotChangedTooRecently(Item testItem) {
+        if (testItem.getDaysSincePromoBecameActive() == 0 && testItem.getDaysSinceLastPriceChange() > DAYS_PRICE_MUST_REMAIN_STABLE_TO_ACTIVATE_PROMO) return true;
         return false;
     }
 
-    private boolean hasThePromoGoneOverItsMaxAllowedDays(Item testItem) {
-        if (testItem.getDaysSincePromoBecameActive() > MAXIMUM_LENGTH_OF_PROMOTION) return true;
+    private boolean hasThePromoNotGoneOverItsMaxAllowedDays(Item testItem) {
+        if (testItem.getDaysSincePromoBecameActive() <= MAXIMUM_LENGTH_OF_PROMOTION) return true;
         return false;
     }
 
-    private boolean didThePriceChangeButFallOutsideOfTheAcceptableRange(Item testItem) {
+    private boolean didThePriceChangeAndFallInsideOfTheAcceptableRange(Item testItem) {
         if (testItem.getCurrentPrice() != testItem.getNewPrice()) {
             double percentagePriceDropFromPrePromoPrice = (testItem.getPriceAtTimeOfPromoActivation() - testItem.getNewPrice()) / testItem.getPriceAtTimeOfPromoActivation();
-            return percentagePriceDropFromPrePromoPrice > MAXIMUM_PERCENTAGE_DROP || percentagePriceDropFromPrePromoPrice < MINIMUM_PERCENTAGE_DROP;
+            return percentagePriceDropFromPrePromoPrice < MAXIMUM_PERCENTAGE_DROP && percentagePriceDropFromPrePromoPrice > MINIMUM_PERCENTAGE_DROP;
         }
         return false;
     }
 
-    private boolean didThePriceIncrease(Item testItem) {
-        return testItem.getNewPrice() > testItem.getCurrentPrice();
+    private boolean didThePriceNotIncrease(Item testItem) {
+        return testItem.getNewPrice() <= testItem.getCurrentPrice();
     }
 }
