@@ -10,15 +10,10 @@ public class RedPencilPromo {
 
     public boolean isPromoActive(Item testItem) {
 
-        if (!didThePriceNotIncrease(testItem)) return false;
-
-        if (!didThePriceChangeAndFallInsideOfTheAcceptableRange(testItem)) return false;
-
-        if (!hasThePromoNotGoneOverItsMaxAllowedDays(testItem)) return false;
-
-        if (!checkIfWhenPromoNotActiveWasPriceNotChangedTooRecently(testItem)) return false;
-
-        return true;
+        return didThePriceNotIncrease(testItem)
+                && didThePriceChangeAndFallInsideOfTheAcceptableRange(testItem)
+                && hasThePromoNotGoneOverItsMaxAllowedDays(testItem)
+                && checkIfWhenPromoNotActiveWasPriceNotChangedTooRecently(testItem);
 
     }
 
