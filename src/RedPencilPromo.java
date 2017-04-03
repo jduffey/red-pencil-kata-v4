@@ -23,8 +23,7 @@ public class RedPencilPromo {
     }
 
     private boolean hasThePromoNotGoneOverItsMaxAllowedDays(Item testItem) {
-        if (testItem.getDaysSincePromoBecameActive() <= MAXIMUM_LENGTH_OF_PROMOTION) return true;
-        return false;
+        return testItem.getDaysSincePromoBecameActive() <= MAXIMUM_LENGTH_OF_PROMOTION;
     }
 
     private boolean checkIfThePriceChangedDidItFallInsideOfTheAcceptableRange(Item testItem) {
