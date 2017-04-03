@@ -18,8 +18,8 @@ public class RedPencilPromo {
     }
 
     private boolean checkIfWhenPromoNotActiveWasPriceNotChangedTooRecently(Item testItem) {
-        if (testItem.getDaysSincePromoBecameActive() == 0 && testItem.getDaysSinceLastPriceChange() > DAYS_PRICE_MUST_REMAIN_STABLE_TO_ACTIVATE_PROMO) return true;
-        return false;
+        return testItem.getDaysSincePromoBecameActive() == 0
+                && testItem.getDaysSinceLastPriceChange() > DAYS_PRICE_MUST_REMAIN_STABLE_TO_ACTIVATE_PROMO;
     }
 
     private boolean hasThePromoNotGoneOverItsMaxAllowedDays(Item testItem) {
@@ -28,11 +28,10 @@ public class RedPencilPromo {
     }
 
     private boolean checkIfThePriceChangedDidItFallInsideOfTheAcceptableRange(Item testItem) {
-        if (testItem.getCurrentPrice() != testItem.getNewPrice()) {
-            double percentagePriceDropFromPrePromoPrice = (testItem.getPriceAtTimeOfPromoActivation() - testItem.getNewPrice()) / testItem.getPriceAtTimeOfPromoActivation();
-            return percentagePriceDropFromPrePromoPrice < MAXIMUM_PERCENTAGE_DROP && percentagePriceDropFromPrePromoPrice > MINIMUM_PERCENTAGE_DROP;
-        }
-        return false;
+        double percentagePriceDropFromPrePromoPrice = (testItem.getPriceAtTimeOfPromoActivation() - testItem.getNewPrice()) / testItem.getPriceAtTimeOfPromoActivation();
+        return (testItem.getCurrentPrice() != testItem.getNewPrice())
+                && percentagePriceDropFromPrePromoPrice < MAXIMUM_PERCENTAGE_DROP
+                && percentagePriceDropFromPrePromoPrice > MINIMUM_PERCENTAGE_DROP;
     }
 
     private boolean didThePriceNotIncrease(Item testItem) {
